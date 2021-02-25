@@ -6,8 +6,9 @@
 # Description: Modules and maps
 
 from map import Map
+from menu import Menu
 
 map = Map()
-
+Menu()
 map.position += 3
 map.print()

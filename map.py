@@ -1,15 +1,16 @@
-import Tiles
+import Dictionary
 import random
 
 # creates and prints out map
 
-
+map = []
+for i in range(25):
+    map.append(random.choice(Dictionary.TokenTiles))
+  
 class Map:
     def __init__(self):
         self.position = 0
-        self.map = []
-        for i in range(25):
-            self.map.append(random.choice(Tiles.TokenTiles))
+        
         self.formatted_map = (
             "╔═════╦═════╦═════╦═════╦═════╗   \n"
             "║ {} ║ {} ║ {} ║ {} ║ {} ║        \n"
@@ -21,7 +22,7 @@ class Map:
             "║ {} ║ {} ║ {} ║ {} ║ {} ║        \n"
             "╠═════╬═════╬═════╬═════╬═════╣   \n"
             "║ {} ║ {} ║ {} ║ {} ║ {} ║        \n"
-            "╚═════╩═════╩═════╩═════╩═════╝   \n"
+            "╚═════╩═════╩═════╩═════╩═════╝     "
         )
 
     def print(self):
@@ -29,12 +30,12 @@ class Map:
             self.formatted_map.format(
                 *(
                     f"[{x.Token}]" if i == self.position else f' {x.Token} '
-                    for i, x in enumerate(self.map)
+                    for i, x in enumerate(map)
                 )
             )
         )
 
-        tile = self.map[self.position]
+        tile = map[self.position]
 
         print(f"You are currently standing on {tile.name}")
         print(f"{tile.info}\n{tile.info2}")
