@@ -4,3 +4,6 @@ v1
 
 v.1.1
 - Made a random map generator that generats a map with specific tiles and tile attributes
+
+v1.2
+- Imported Menu system and integrated it to the map

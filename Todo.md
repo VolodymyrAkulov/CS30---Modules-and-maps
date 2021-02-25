@@ -1,0 +1,2 @@
+- bug in menu.py where west and east transports across the map
+- Grammar

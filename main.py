@@ -10,5 +10,5 @@ from menu import Menu
 
 map = Map()
 Menu()
-map.position += 3
+map.position += 0
 map.print()

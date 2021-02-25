@@ -16,16 +16,16 @@ def MapMenu():
         print(40 * "-")
         x = input("North\nSouth\nWest\nEast\n\nExit\n\n")
         x = x.lower()
-        if x == "north":
+        if x == "north" and map.position > 4:
           map.position = map.position - 5 
           print(f"\nYou moved {x}")
-        elif x == "south":
+        elif x == "south" and map.position < 20:
           map.position = map.position + 5 
           print(f"\nYou moved {x}")
-        elif x == "west":
+        elif x == "west" and map.position != 0:
           map.position = map.position - 1 
           print(f"\nYou moved {x}")
-        elif x == "east":
+        elif x == "east" and map.position != 24:
             map.position = map.position + 1 
             print(f"\nYou moved {x}")
         elif x == "exit":
