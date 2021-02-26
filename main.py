@@ -3,12 +3,20 @@
 # Date created: 2/10/21
 # Date last modified: 2/10/25
 # Name: Volodymyr Akulov
-# Description: Modules and maps
+# Description: RPG Game
 
+
+HP = 20
+
+from Enemy import Encounter
 from map import Map
 from menu import Menu
 
+
 map = Map()
 Menu()
-map.position += 0
-map.print()
+
+encounter = Encounter()
+encounter.print()
+
+

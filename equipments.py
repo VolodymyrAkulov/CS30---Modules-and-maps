@@ -2,7 +2,7 @@
 
 import random
 
-# Running the commad
+# Running the command
 
 level = 100
 

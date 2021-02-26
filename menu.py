@@ -8,27 +8,33 @@
 from map import Map
 map = Map()
 
+from GlobalVar import p
+
 # Map menu
 def MapMenu():
+    """Function displays map menu"""
     while True:
         print("\n" + 18 * "-" + "Map" + 18 * "-")
         map.print()
         print(40 * "-")
         x = input("North\nSouth\nWest\nEast\n\nExit\n\n")
         x = x.lower()
-        if x == "north" and map.position > 4:
-          map.position = map.position - 5 
-          print(f"\nYou moved {x}")
-        elif x == "south" and map.position < 20:
-          map.position = map.position + 5 
-          print(f"\nYou moved {x}")
-        elif x == "west" and map.position != 0:
-          map.position = map.position - 1 
-          print(f"\nYou moved {x}")
-        elif x == "east" and map.position != 24:
-            map.position = map.position + 1 
+        if x == "north" and p.pos > 4:
+            p.pos = p.pos - 5 
             print(f"\nYou moved {x}")
+        elif x == "south" and p.pos < 20:
+            p.pos = p.pos + 5 
+            print(f"\nYou moved {x}")
+        elif x == "west" and p.pos != 0 and p.pos != 5 and\
+            p.pos != 10 and p.pos != 15 and p.pos != 20 :
+                p.pos = p.pos - 1 
+                print(f"\nYou moved {x}")
+        elif x == "east" and p.pos != 4 and p.pos != 9 and\
+            p.pos != 14 and p.pos != 19 and p.pos != 24 :
+                p.pos = p.pos + 1 
+                print(f"\nYou moved {x}")
         elif x == "exit":
+            print(p.pos)
             break
         else:
             print("Thats not a direction you can move in try again")
@@ -68,6 +74,7 @@ def Menu():
       elif x.lower() == "interact":
           print("\nYou interacted with the environment")
       elif x.lower() == "exit":
+          print(p.pos)
           break
       else:
           print("\nInvalid action try again")
