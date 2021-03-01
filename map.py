@@ -15,9 +15,7 @@ from termcolor import colored
 
 map = []
 EnemyPos = []
-
-p.position = 0
-p.pos = p.position
+p.pos = 0
 
 for i in range(25):
     map.append(random.choice(Dictionary.TokenTiles))
@@ -25,41 +23,6 @@ for i in range(25):
 for i in range(random.randint(5, 10)):
     EnemyPos.append(random.randint(0, 24))
 
-formatted_map = (
-            "╔═══════╦═══════╦═══════╦═══════╦═══════╗\n"
-            "║       ║       ║       ║       ║       ║\n"
-            "║ {} ║ {} ║ {} ║ {} ║ {} ║               \n"
-            "║       ║       ║       ║       ║       ║\n"
-            "╠═══════╬═══════╬═══════╬═══════╬═══════╣\n"
-            "║       ║       ║       ║       ║       ║\n"
-            "║ {} ║ {} ║ {} ║ {} ║ {} ║               \n"
-            "║       ║       ║       ║       ║       ║\n"
-            "╠═══════╬═══════╬═══════╬═══════╬═══════╣\n"
-            "║       ║       ║       ║       ║       ║\n"
-            "║ {} ║ {} ║ {} ║ {} ║ {} ║               \n"
-            "║       ║       ║       ║       ║       ║\n"
-            "╠═══════╬═══════╬═══════╬═══════╬═══════╣\n"
-            "║       ║       ║       ║       ║       ║\n"
-            "║ {} ║ {} ║ {} ║ {} ║ {} ║               \n"
-            "║       ║       ║       ║       ║       ║\n"
-            "╠═══════╬═══════╬═══════╬═══════╬═══════╣\n"
-            "║       ║       ║       ║       ║       ║\n"
-            "║ {} ║ {} ║ {} ║ {} ║ {} ║               \n"
-            "║       ║       ║       ║       ║       ║\n"
-            "╚═══════╩═══════╩═══════╩═══════╩═══════╝  "
-        )
-
-def asdf(i, x):
-  if i in EnemyPos and i == p.pos:
-    return f"[֎{x}֎]"
-  elif i == p.pos:
-    return f" [{x}] "
-  elif i in EnemyPos:
-    return f" ֎{x}֎ "
-  else:
-    return f"  {x}  "
-
-print(formatted_map.format(*(asdf(i, x.Token) for i, x in enumerate(map))))
 
 class Map:
     def __init__(self):
@@ -90,22 +53,27 @@ class Map:
         self.tile = map[p.pos]
 
     def print(self):
-        def asdf(i, x):
-          if i in EnemyPos and i == p.pos:
-            return f"[֎{x}֎]"
-          elif i == p.pos:
-            return f" [{x}] "
-          elif i in EnemyPos:
-            return f" ֎{x}֎ "
-          else:
-            return f"  {x}  "
+
+        def form(i, x):
+            if i in EnemyPos and i == p.pos:
+                return f"[֎{x}֎]"
+            elif i == p.pos:
+                return f" [{x}] "
+            elif i in EnemyPos:
+                return f" ֎{x}֎ "
+            else:
+                return f"  {x}  "
+
+        print(self.formatted_map.format(*(form(i, x.Token)
+                                          for i, x in enumerate(map))))
 
         print(17 * "-" + "Legend" + 17 * "-")
         print(
             f"{colored('M','blue')} - Mud     \n"
             f"{colored('D','white')} - Dirt   \n"
             f"{colored('G','green')} - Grass  \n"
-            f"{colored('S','red')} - Stone      "
+            f"{colored('S','red')} - Stone    \n"
+            "֎ - Enemy"
         )
 
         print(40 * "-")

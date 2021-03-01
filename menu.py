@@ -5,9 +5,11 @@
 # Name: Janice Cotcher
 # Description: Continous gameplay
 
+import Enemy
+from Enemy import Encounter
 from map import Map
 map = Map()
-
+encounter = Encounter()
 from GlobalVar import p
 
 # Map menu
@@ -34,7 +36,6 @@ def MapMenu():
                 p.pos = p.pos + 1 
                 print(f"\nYou moved {x}")
         elif x == "exit":
-            print(p.pos)
             break
         else:
             print("Thats not a direction you can move in try again")
@@ -59,22 +60,30 @@ def InvMenu():
         else:
             print("\nInvalid action try again")
 
+def FightMenu():
+    while True:
+        print(("\n" + 17 * "-" + "Combat" + 17 * "-"))
+        encounter.print()
+        x = input("Attack\nBag\n\nExit\n\n")
+        x = x.lower
+        if x == 'attack':
+            Enemy.EHP = Enemy.EHP - Enemy.DMG
 
 # Main menu
 def Menu():
   while True:
       print(15*"-"+"Main Menu"+15*"-")
-      x = input("Inventory\nMap\nQuit\nInteract\n\nExit\n\n")
+      x = input("Inventory\nMap\nQuit\nFight\n\nExit\n\n")
       if x.lower() == "inventory":
           InvMenu()
       elif x.lower() == "map":
           MapMenu()
       elif x.lower() == "quit":
           break
-      elif x.lower() == "interact":
-          print("\nYou interacted with the environment")
+      elif x.lower() == "fight":
+          FightMenu()
+          Encounter.SetupFight()
       elif x.lower() == "exit":
-          print(p.pos)
           break
       else:
           print("\nInvalid action try again")
