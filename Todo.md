@@ -1,1 +1,3 @@
 - Grammar/ Spelling
+- Comments 
+- Fix first non enemy tile bug

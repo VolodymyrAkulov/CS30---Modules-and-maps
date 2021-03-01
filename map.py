@@ -16,90 +16,90 @@ from termcolor import colored
 map = []
 EnemyPos = []
 
-
-class Yes:
-    YN = "E"
-
-
-class No:
-    YN = " "
-
-
-YN = [Yes, No]
-
-for i in range(25):
-    map.append(random.choice(Dictionary.TokenTiles))
-    EnemyPos.append(random.choice(YN))
-
 p.position = 0
 p.pos = p.position
 
+for i in range(25):
+    map.append(random.choice(Dictionary.TokenTiles))
+
+for i in range(random.randint(5, 10)):
+    EnemyPos.append(random.randint(0, 24))
+
+formatted_map = (
+            "╔═══════╦═══════╦═══════╦═══════╦═══════╗\n"
+            "║       ║       ║       ║       ║       ║\n"
+            "║ {} ║ {} ║ {} ║ {} ║ {} ║               \n"
+            "║       ║       ║       ║       ║       ║\n"
+            "╠═══════╬═══════╬═══════╬═══════╬═══════╣\n"
+            "║       ║       ║       ║       ║       ║\n"
+            "║ {} ║ {} ║ {} ║ {} ║ {} ║               \n"
+            "║       ║       ║       ║       ║       ║\n"
+            "╠═══════╬═══════╬═══════╬═══════╬═══════╣\n"
+            "║       ║       ║       ║       ║       ║\n"
+            "║ {} ║ {} ║ {} ║ {} ║ {} ║               \n"
+            "║       ║       ║       ║       ║       ║\n"
+            "╠═══════╬═══════╬═══════╬═══════╬═══════╣\n"
+            "║       ║       ║       ║       ║       ║\n"
+            "║ {} ║ {} ║ {} ║ {} ║ {} ║               \n"
+            "║       ║       ║       ║       ║       ║\n"
+            "╠═══════╬═══════╬═══════╬═══════╬═══════╣\n"
+            "║       ║       ║       ║       ║       ║\n"
+            "║ {} ║ {} ║ {} ║ {} ║ {} ║               \n"
+            "║       ║       ║       ║       ║       ║\n"
+            "╚═══════╩═══════╩═══════╩═══════╩═══════╝  "
+        )
+
+def asdf(i, x):
+  if i in EnemyPos and i == p.pos:
+    return f"[֎{x}֎]"
+  elif i == p.pos:
+    return f" [{x}] "
+  elif i in EnemyPos:
+    return f" ֎{x}֎ "
+  else:
+    return f"  {x}  "
+
+print(formatted_map.format(*(asdf(i, x.Token) for i, x in enumerate(map))))
 
 class Map:
     def __init__(self):
 
         self.formatted_map = (
-            "╔═══════╦═══════╦═══════╦═══════╦═══════╗            \n"
-            "║       ║       ║       ║       ║       ║            \n"
-            "║ {} ║ {} ║ {} ║ {} ║ {} ║                           \n"
-            "║       ║       ║       ║       ║       ║            \n"
-            "╠═══════╬═══════╬═══════╬═══════╬═══════╣            \n"
-            "║       ║       ║       ║       ║       ║            \n"
-            "║ {} ║ {} ║ {} ║ {} ║ {} ║                           \n"
-            "║       ║       ║       ║       ║       ║            \n"
-            "╠═══════╬═══════╬═══════╬═══════╬═══════╣            \n"
-            "║       ║       ║       ║       ║       ║            \n"
-            "║ {} ║ {} ║ {} ║ {} ║ {} ║                           \n"
-            "║       ║       ║       ║       ║       ║            \n"
-            "╠═══════╬═══════╬═══════╬═══════╬═══════╣            \n"
-            "║       ║       ║       ║       ║       ║            \n"
-            "║ {} ║ {} ║ {} ║ {} ║ {} ║                           \n"
-            "║       ║       ║       ║       ║       ║            \n"
-            "╠═══════╬═══════╬═══════╬═══════╬═══════╣            \n"
-            "║       ║       ║       ║       ║       ║            \n"
-            "║ {} ║ {} ║ {} ║ {} ║ {} ║                           \n"
-            "║       ║       ║       ║       ║       ║            \n"
-            "╚═══════╩═══════╩═══════╩═══════╩═══════╝              "
+            "╔═══════╦═══════╦═══════╦═══════╦═══════╗\n"
+            "║       ║       ║       ║       ║       ║\n"
+            "║ {} ║ {} ║ {} ║ {} ║ {} ║               \n"
+            "║       ║       ║       ║       ║       ║\n"
+            "╠═══════╬═══════╬═══════╬═══════╬═══════╣\n"
+            "║       ║       ║       ║       ║       ║\n"
+            "║ {} ║ {} ║ {} ║ {} ║ {} ║               \n"
+            "║       ║       ║       ║       ║       ║\n"
+            "╠═══════╬═══════╬═══════╬═══════╬═══════╣\n"
+            "║       ║       ║       ║       ║       ║\n"
+            "║ {} ║ {} ║ {} ║ {} ║ {} ║               \n"
+            "║       ║       ║       ║       ║       ║\n"
+            "╠═══════╬═══════╬═══════╬═══════╬═══════╣\n"
+            "║       ║       ║       ║       ║       ║\n"
+            "║ {} ║ {} ║ {} ║ {} ║ {} ║               \n"
+            "║       ║       ║       ║       ║       ║\n"
+            "╠═══════╬═══════╬═══════╬═══════╬═══════╣\n"
+            "║       ║       ║       ║       ║       ║\n"
+            "║ {} ║ {} ║ {} ║ {} ║ {} ║               \n"
+            "║       ║       ║       ║       ║       ║\n"
+            "╚═══════╩═══════╩═══════╩═══════╩═══════╝  "
         )
         self.tile = map[p.pos]
 
     def print(self):
+        def asdf(i, x):
+          if i in EnemyPos and i == p.pos:
+            return f"[֎{x}֎]"
+          elif i == p.pos:
+            return f" [{x}] "
+          elif i in EnemyPos:
+            return f" ֎{x}֎ "
+          else:
+            return f"  {x}  "
 
-        Aformat = self.formatted_map.format(
-            *(
-                f"[֎{x.Token}֎]"
-                if "E" == EnemyPos[i].YN and i == p.pos
-                else "{}"
-                for i, x in enumerate(map)
-            )
-        )
-
-        Bformat = Aformat.format(
-            *(
-                f" [{x.Token}] " if i == p.pos else "{}"
-                for i, x in enumerate(map)
-            )
-        )
-
-        Cformat = Bformat.format(
-            *(
-                f" ֎{x.Token}֎ "
-                if "E" == EnemyPos[i].YN and i != p.pos
-                else "{}"
-                for i, x in enumerate(map)
-            )
-        )
-
-        print(
-            Cformat.format(
-                *(
-                    f"  {x.Token}  "
-                    if i != EnemyPos[i].YN and i != p.pos
-                    else "{}"
-                    for i, x in enumerate(map)
-                )
-            )
-        )
         print(17 * "-" + "Legend" + 17 * "-")
         print(
             f"{colored('M','blue')} - Mud     \n"
